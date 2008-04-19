@@ -36,7 +36,7 @@ class SaneDialog : public KScanDialog
    Q_OBJECT
 
     public:
-        SaneDialog( QWidget *parent = 0, const QVariantList &args = QVariantList() );
+        explicit SaneDialog( QWidget *parent = 0, const QVariantList &args = QVariantList() );
         ~SaneDialog();
 
         virtual bool setup();

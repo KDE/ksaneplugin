@@ -63,5 +63,5 @@ Name[zh_CN]=KDE 扫描服务
 Name[zh_HK]=KDE 掃描服務
 Name[zh_TW]=KDE 掃描服務
 X-KDE-Library=ksaneplugin
-InitialPreference=2
+#InitialPreference=2
 X-KDE-ServiceTypes=KScan/KScanDialog
