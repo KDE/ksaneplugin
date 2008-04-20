@@ -77,7 +77,6 @@ bool SaneDialog::setup()
 
 SaneDialog::~SaneDialog()
 {
-    delete ksanew;
 }
 
 void SaneDialog::imageReady(QByteArray &data, int w, int h, int bpl, int f)
