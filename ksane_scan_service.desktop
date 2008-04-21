@@ -2,5 +2,5 @@
 Type=Service
 Name=KDE Scan Service
 X-KDE-Library=ksaneplugin
-#InitialPreference=2
+InitialPreference=3
 X-KDE-ServiceTypes=KScan/KScanDialog
