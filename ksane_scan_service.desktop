@@ -1,7 +1,9 @@
 [Desktop Entry]
 Type=Service
 Name=KDE Scan Service
-Name[et]=KDE skaneerimisteenus
+Name[pt]=Serviço de Digitalização do KDE
+Name[pt_BR]=Serviço de Digitalização do KDE
+Name[sv]=KDE:s bildläsningstjänst
 X-KDE-Library=ksaneplugin
 InitialPreference=3
 X-KDE-ServiceTypes=KScan/KScanDialog
