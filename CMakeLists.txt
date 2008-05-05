@@ -1,13 +1,6 @@
 
 project(ksaneplugin)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/../cmake/modules)
-
-find_package(KDE4 REQUIRED)
-include(KDE4Defaults)
-include_directories (${KDE4_INCLUDES})
-find_package(KSane REQUIRED)
-
 ########### target ###############
 kde4_add_plugin(ksaneplugin sanedialog.cpp)
 
