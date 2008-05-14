@@ -1,6 +1,9 @@
 
 project(ksaneplugin)
 
+find_package(KSane REQUIRED)
+message("KSANE_LIBRARY=${KSANE_LIBRARY}")
+include_directories(${KSANE_INCLUDE_DIR})
 ########### target ###############
 kde4_add_plugin(ksaneplugin sanedialog.cpp)
 
