@@ -31,7 +31,7 @@
 #include <KMessageBox>
 
 K_PLUGIN_FACTORY(SaneDialogFactory, registerPlugin<SaneDialog>();)
-K_EXPORT_PLUGIN(SaneDialogFactory("kscanplugin"))
+K_EXPORT_PLUGIN(SaneDialogFactory("ksaneplugin"))
 
 
 ///////////////////////////////////////////////////////////////////
