@@ -29,7 +29,6 @@
 #include <kscan.h>
 #include <libksane/ksane.h>
 
-class SaneDialogPrivate;
 
 class SaneDialog : public KScanDialog
 {
