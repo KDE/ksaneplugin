@@ -29,6 +29,7 @@
 #include <KDebug>
 #include <KPluginLoader>
 #include <KMessageBox>
+#include <KSharedConfig>
 
 K_PLUGIN_FACTORY(SaneDialogFactory, registerPlugin<SaneDialog>();)
 K_EXPORT_PLUGIN(SaneDialogFactory("ksaneplugin"))
@@ -71,12 +72,35 @@ bool SaneDialog::setup()
         openDev = QString();
         return false;
     }
+
+    // restore scan dialog size and all options for the selected device if available
+    KSharedConfigPtr configPtr = KSharedConfig::openConfig("scannersettings");
+    restoreDialogSize(KConfigGroup(configPtr, "ScanDialog"));
+    QString groupName = openDev;
+    if (configPtr->hasGroup(groupName)) {
+        KConfigGroup group(configPtr, groupName);
+        QStringList keys = group.keyList();
+        for (int i = 0; i < keys.count(); i++)
+            ksanew->setOptVal(keys[i], group.readEntry(keys[i]));
+    }
+
    return true;
 }
 
-
 SaneDialog::~SaneDialog()
 {
+    if (ksanew && !openDev.isEmpty()) {
+        // save scan dialog size and all options for the selected device if available
+        KSharedConfigPtr configPtr = KSharedConfig::openConfig("scannersettings");
+        KConfigGroup group(configPtr, "ScanDialog");
+        saveDialogSize(group, KConfigGroup::Persistent);
+        group = configPtr->group(openDev);
+        QMap<QString, QString> opts;
+        ksanew->getOptVals(opts);
+        QMap<QString, QString>::const_iterator i = opts.constBegin();
+        for (; i != opts.constEnd(); ++i)
+            group.writeEntry(i.key(), i.value(), KConfigGroup::Persistent);
+    }
 }
 
 void SaneDialog::imageReady(QByteArray &data, int w, int h, int bpl, int f)
