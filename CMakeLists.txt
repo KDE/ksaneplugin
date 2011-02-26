@@ -1,8 +1,16 @@
 
 project(ksaneplugin)
 
+find_package(KDE4 REQUIRED)
+include(KDE4Defaults)
+include(MacroLibrary)
+include(MacroOptionalAddSubdirectory)
+
 find_package(KSane REQUIRED)
 include_directories(${KSANE_INCLUDE_DIR})
+add_definitions (${QT_DEFINITIONS} ${QT_QTDBUS_DEFINITIONS} ${KDE4_DEFINITIONS})
+include_directories (${QDBUS_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${KDE4_INCLUDES})
+
 ########### target ###############
 kde4_add_plugin(ksaneplugin sanedialog.cpp)
 
